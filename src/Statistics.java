@@ -29,7 +29,7 @@ public class Statistics {
 	 */
 	public static double variance(double[] x) {
 		double length = x.length;
-		if ( x == null || length == 0) throw new IllegalArgumentException();
+		if ( x == null || length == 0) throw new IllegalArgumentException("An array must contain at least 1 element.");
 		double sum = 0;
 		double avg = average(x);
 		for (int i = 0; i < length; i++) {
@@ -59,8 +59,10 @@ public class Statistics {
 	public static double covariance(double[] x, double[] y) {
 		double length = x.length;
 		double yLength = y.length;
-		if ( x == null || length == 0 || y == null || yLength == 0 ) throw new IllegalArgumentException();
-		if ( length != yLength ) throw new IllegalArgumentException();
+		if ( x == null || length == 0 || y == null || yLength == 0 ) {
+			throw new IllegalArgumentException("Arrays must contain at least 1 element.");
+		}
+		if ( length != yLength ) throw new IllegalArgumentException("Arrays are not smae length.");
 		double sum = 0;
 		double avgX = average(x);
 		double avgY = average(y);
