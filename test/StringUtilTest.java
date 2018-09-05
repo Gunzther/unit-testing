@@ -17,6 +17,11 @@ public class StringUtilTest {
 		String[] fruit = {"Apple", "Banana", "Grapes"};
 		assertEquals(0, StringUtil.indexOf("Apple", fruit));
 	}
-
-	//TODO write more tests. Test other cases.
+	
+	@Test
+	public void testElementNotContained(){
+		String[] fruit = {"Apple", "Banana", "Grapes"};
+		assertEquals(-1, StringUtil.indexOf("Mango", fruit));
+		assertEquals(-1, StringUtil.indexOf("Blueberry", fruit));
+	}
 }
