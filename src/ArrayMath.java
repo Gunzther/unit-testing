@@ -1,28 +1,32 @@
 /**
  * Some linear algebra methods, for testing.
  * 
- * @author Jim
+ * @author Korawit Rupanya
  *
  */
 public class ArrayMath {
 
 	/**
-	 * Compute dot product of two vectors.
-	 * The vectors must have the same length.
+	 * Compute dot product of two vectors.If the vectors don't have the same length,Then 
+	 * compute base on the shorter vectors.
 	 * 
 	 * @param x first vector to multiply
 	 * @param y second vector to multiply
 	 * @return dot-product of x and y
-	 * @throws IllegalArgumentException if x and y are not arrays of the same size
 	 */
 	public static double dotProduct(double[] x, double[] y) {
-		if (x.length != y.length) throw new IllegalArgumentException("Vector lengths must be same");
-		int size = x.length;
+		int size1 = x.length;
+		int size2 = y.length;
 		double product = 0.0;
-		for (int k = 0; k < size; k++) {
-			product += x[k]*y[k];
-		}
+		if (size1 <= size2) {
+			for (int k = 0; k < size1; k++) {
+				product += x[k] * y[k];
+			}
+		} else if (size1 > size2) {
+			for (int k = 0; k < size2; k++) {
+				product += x[k] * y[k];
+			}
+		} 
 		return product;
 	}
-	
 }

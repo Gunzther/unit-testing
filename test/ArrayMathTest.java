@@ -26,9 +26,15 @@ public class ArrayMathTest {
 		assertEquals( 0.0, ArrayMath.dotProduct(x, y), TOL);
 	}
 	
-	//TODO Add at least one test for the "typical" case: vectors larger than 1.
-	// Please don't copy my tests. You don't need random numbers (not a good idea
-	// because test results may not be reproducable).
+	@Test
+	public void simplytestDotProduct() {
+		double[] x = {2.1,5.2,1.3,3.2,5.6};
+		double[] y = {7.5,4.2,3.3,2.2,1.6};
+		double notexpected = x[1]*y[1];
+		assertNotEquals( notexpected, ArrayMath.dotProduct(x, y), TOL);
+		assertNotEquals( notexpected, ArrayMath.dotProduct(y, x), TOL);
+		
+	}
 
 	@Test
 	public void testDotProductHugeVectors() {
@@ -48,17 +54,15 @@ public class ArrayMathTest {
 		assertEquals( product, ArrayMath.dotProduct(x, y), TOL);
 		assertEquals( product, ArrayMath.dotProduct(y, x), TOL);
 	}
-
-	/** 
-	 * This test should throw an exception,
-	 * but not after you change the spec for dotProduct!
-	 */
-	@Test(expected=java.lang.IllegalArgumentException.class)
-	public void testDotProductLengthsNotSame() {
-		double[] x = new double[] {1, 3, 5, 7, 9};
-		double[] y = new double[] {-2, 0.5, 4};
-		assertEquals( 19.5, ArrayMath.dotProduct(x, y), TOL);
-		assertEquals( 19.5, ArrayMath.dotProduct(y, x), TOL);
+	
+	@Test
+	public void testDotProductWithdiffernceDimension() {
+		double[] x = {2.1,5.2,1.3,3.2,5.6};
+		double[] y = {7.5};
+		double expected = x[0]*y[0];
+		assertEquals( expected, ArrayMath.dotProduct(x, y), TOL);
+		assertEquals( expected, ArrayMath.dotProduct(y, x), TOL);
+		
 	}
-
+	
 }
