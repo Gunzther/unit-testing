@@ -56,8 +56,15 @@ public class Statistics {
 	 * @throws IllegalArgumentException if arrays are not same length or length is 0.
 	 */
 	public static double covariance(double[] x, double[] y) {
-		//TODO write the code
-		return 0;
+		double sum = 0;
+		double avgX = average(x);
+		double avgY = average(y);
+		if (x.length != y.length) throw new IllegalArgumentException();
+		if (x == y) return variance(x);
+		for (int i = 0; i < x.length; i++) {
+			sum += ( x[i] * y[i] );
+		}
+		return (sum/x.length) - (avgX*avgY);
 	}
 	
 }
