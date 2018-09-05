@@ -63,10 +63,11 @@ public class Statistics {
 			throw new IllegalArgumentException("Arrays must contain at least 1 element.");
 		}
 		if ( length != yLength ) throw new IllegalArgumentException("Arrays are not same length.");
+		if (x == y) return variance(x);
+		
 		double sum = 0;
 		double avgX = average(x);
 		double avgY = average(y);
-		if (x == y) return variance(x);
 		for (int i = 0; i < length; i++) {
 			sum += ( x[i] * y[i] );
 		}
