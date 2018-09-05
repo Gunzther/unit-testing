@@ -62,7 +62,7 @@ public class Statistics {
 		if ( x == null || length == 0 || y == null || yLength == 0 ) {
 			throw new IllegalArgumentException("Arrays must contain at least 1 element.");
 		}
-		if ( length != yLength ) throw new IllegalArgumentException("Arrays are not smae length.");
+		if ( length != yLength ) throw new IllegalArgumentException("Arrays are not same length.");
 		double sum = 0;
 		double avgX = average(x);
 		double avgY = average(y);
