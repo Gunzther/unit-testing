@@ -28,13 +28,14 @@ public class Statistics {
 	 * @throws IllegalArgumentException if x is empty
 	 */
 	public static double variance(double[] x) {
-		if ( x == null || x.length == 0) throw new IllegalArgumentException();
+		double length = x.length;
+		if ( x == null || length == 0) throw new IllegalArgumentException();
 		double sum = 0;
 		double avg = average(x);
-		for (int i = 0; i < x.length; i++) {
+		for (int i = 0; i < length; i++) {
 			sum += ( x[i] * x[i] );
 		}
-		return (sum/x.length) - (avg*avg);
+		return (sum/length) - (avg*avg);
 	}
 	
 	/**
@@ -56,16 +57,18 @@ public class Statistics {
 	 * @throws IllegalArgumentException if arrays are not same length or length is 0.
 	 */
 	public static double covariance(double[] x, double[] y) {
+		double length = x.length;
+		double yLength = y.length;
+		if ( x == null || length == 0 || y == null || yLength == 0 ) throw new IllegalArgumentException();
+		if ( length != yLength ) throw new IllegalArgumentException();
 		double sum = 0;
 		double avgX = average(x);
 		double avgY = average(y);
-		if ( x == null || x.length == 0 || y == null || y.length == 0) throw new IllegalArgumentException();
-		if (x.length != y.length) throw new IllegalArgumentException();
 		if (x == y) return variance(x);
-		for (int i = 0; i < x.length; i++) {
+		for (int i = 0; i < length; i++) {
 			sum += ( x[i] * y[i] );
 		}
-		return (sum/x.length) - (avgX*avgY);
+		return (sum/length) - (avgX*avgY);
 	}
 	
 }
