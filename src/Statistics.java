@@ -27,7 +27,8 @@ public class Statistics {
 	 * @return the variance of x
 	 * @throws IllegalArgumentException if x is empty
 	 */
-	public static double variance(double[] x) throws IllegalArgumentException{
+	public static double variance(double[] x) {
+		if ( x == null || x.length == 0) throw new IllegalArgumentException();
 		double sum = 0;
 		double avg = average(x);
 		for (int i = 0; i < x.length; i++) {
