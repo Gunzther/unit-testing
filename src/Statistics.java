@@ -59,6 +59,7 @@ public class Statistics {
 		double sum = 0;
 		double avgX = average(x);
 		double avgY = average(y);
+		if ( x == null || x.length == 0 || y == null || y.length == 0) throw new IllegalArgumentException();
 		if (x.length != y.length) throw new IllegalArgumentException();
 		if (x == y) return variance(x);
 		for (int i = 0; i < x.length; i++) {
