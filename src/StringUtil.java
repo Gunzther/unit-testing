@@ -1,8 +1,11 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * Some utility methods for Strings.
+ * 
+ * @author Sorrawit Tantharatana
  */
 public class StringUtil {
 	/**
@@ -12,10 +15,7 @@ public class StringUtil {
 	 * @return the index of first occurence of arg, or -1 if it is not in the array.
 	 */
 	public static int indexOf(String arg, String[] array) {
-		int index = -1;
-		for(int k=0; k<array.length; k++) {
-			if (array[k].equals(arg)) return k;
-		}
-		return -1;
+		List temp = new ArrayList<>(Arrays.asList(array));
+		return temp.indexOf(arg);
 	}
 }
