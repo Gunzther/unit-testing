@@ -18,15 +18,9 @@ public class ArrayMath {
 		int size1 = x.length;
 		int size2 = y.length;
 		double product = 0.0;
-		if (size1 <= size2) {
-			for (int k = 0; k < size1; k++) {
+		for (int k = 0; k < Math.min(size1, size2); k++) {
 				product += x[k] * y[k];
 			}
-		} else if (size1 > size2) {
-			for (int k = 0; k < size2; k++) {
-				product += x[k] * y[k];
-			}
-		} 
 		return product;
 	}
 }
