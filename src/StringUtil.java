@@ -8,7 +8,7 @@ import java.util.List;
 public class StringUtil {
 	/**
 	 * Find the index of a String (arg) in an array of Strings.
-	 * @param list2 is the string to search for
+	 * @param arg is the string to search for
 	 * @param array is an array of Strings to examine
 	 * @return the index of first occurence of arg, or -1 if it is not in the array.
 	 */
