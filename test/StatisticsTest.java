@@ -7,6 +7,10 @@ public class StatisticsTest {
 	/** A small tolerance for floating point round-off (precision) error. */
 	static final double TOL = 1.0E-6;
 	
+	@Before
+	public void setUp() throws Exception {
+	}
+	
 	@Test
 	public void testAverageTinyArray() {
 		double[] x = { 123.01 };
@@ -31,11 +35,55 @@ public class StatisticsTest {
 		assertEquals( avg, Statistics.average(x), TOL);
 	}
 	
-	//TODO add test cases:
-	//1. slightly illegal case. What if array is empty?
-	//2. extrame case: very large array or very different values
+	@Test (expected = IllegalArgumentException.class)
+	public void testIllegalVarianceCase() {
+		double[] x = {};
+		Statistics.variance(x);
+	}
 	
-	//TODO add test for variance.
-	// What are test cases?
-
+	@Test (expected = IllegalArgumentException.class)
+	public void testIllegalCovarianceCase() {
+		double[] x = {1,2,3,4};
+		double[] y = {1,2};
+		double[] z = {};
+		Statistics.covariance(x, y);
+		Statistics.covariance(x, z);
+	}
+	
+	@Test
+	public void testVeryLargeArray() {
+		double[] x = new double[100000];
+		double[] y = new double[100000];
+		java.util.Arrays.fill(x, 15);
+		java.util.Arrays.fill(y, 12);
+		assertEquals(0, Statistics.variance(x), TOL);
+		assertEquals(0, Statistics.covariance(x, y), TOL);
+	}
+	
+	@Test
+	public void testVeryDifferentValue() {
+		double[] x = {1,5000,20,3};
+		double[] y = {30000,8,20,9};
+		assertEquals(4672566.5, Statistics.variance(x), TOL);
+		System.out.println(Statistics.covariance(x, y));
+		assertEquals(-9414011.25, Statistics.covariance(x, y), TOL);
+	}
+	
+	@Test
+	public void testVariance() {
+		double[] x = {1,2,3,4};
+		double[] y = {1,1,1};
+		assertEquals(1.25, Statistics.variance(x), TOL);
+		assertEquals(0, Statistics.variance(y), TOL);
+	}
+	
+	
+	@Test
+	public void testCovariance() {
+		double[] x = {1,2,3,4};
+		double[] y = {1,1,2,2};
+		double[] z = {1,1,2,2};
+		assertEquals(0.5, Statistics.covariance(x, y), TOL);
+		assertEquals(0.25, Statistics.covariance(y, z), TOL);
+	}
 }

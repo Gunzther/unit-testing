@@ -3,6 +3,8 @@ import java.util.Arrays;
 /**
  * Methods for computing some common statistics,
  * such as average, variance, and correlation.
+ * 
+ * @author Gunthee Tawewatmongkol
  */
 public class Statistics {
 
@@ -26,8 +28,14 @@ public class Statistics {
 	 * @throws IllegalArgumentException if x is empty
 	 */
 	public static double variance(double[] x) {
-		//TODO write the code
-		return 0;
+		double length = x.length;
+		if ( x == null || length == 0) throw new IllegalArgumentException("An array must contain at least 1 element.");
+		double sum = 0;
+		double avg = average(x);
+		for (int i = 0; i < length; i++) {
+			sum += ( x[i] * x[i] );
+		}
+		return (sum/length) - (avg*avg);
 	}
 	
 	/**
@@ -49,8 +57,21 @@ public class Statistics {
 	 * @throws IllegalArgumentException if arrays are not same length or length is 0.
 	 */
 	public static double covariance(double[] x, double[] y) {
-		//TODO write the code
-		return 0;
+		double length = x.length;
+		double yLength = y.length;
+		if ( x == null || length == 0 || y == null || yLength == 0 ) {
+			throw new IllegalArgumentException("Arrays must contain at least 1 element.");
+		}
+		if ( length != yLength ) throw new IllegalArgumentException("Arrays are not same length.");
+		if (x == y) return variance(x);
+		
+		double sum = 0;
+		double avgX = average(x);
+		double avgY = average(y);
+		for (int i = 0; i < length; i++) {
+			sum += ( x[i] * y[i] );
+		}
+		return (sum/length) - (avgX*avgY);
 	}
 	
 }
