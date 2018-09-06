@@ -17,6 +17,22 @@ public class StringUtilTest {
 		String[] fruit = {"Apple", "Banana", "Grapes"};
 		assertEquals(0, StringUtil.indexOf("Apple", fruit));
 	}
-
-	//TODO write more tests. Test other cases.
+	
+	@Test
+	public void testIndexDoubleElement() {
+		String[] emp = {"A", "B", "A"};
+		assertEquals(0, StringUtil.indexOf("A", emp));
+	}
+	
+	@Test	
+	public void testEmptyArray() {
+		String[] real_emp = {};
+		assertEquals(-1, StringUtil.indexOf("", real_emp));
+	}
+	
+	@Test	
+	public void testIndexDNE() {
+		String[] car = {"Porsche", "Toyota", "Mazda"};
+		assertEquals(-1, StringUtil.indexOf("BMW", car));
+	}
 }

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -11,11 +12,9 @@ public class StringUtil {
 	 * @param array is an array of Strings to examine
 	 * @return the index of first occurence of arg, or -1 if it is not in the array.
 	 */
-	public static int indexOf(String arg, String[] array) {
-		int index = -1;
-		for(int k=0; k<array.length; k++) {
-			if (array[k].equals(arg)) return k;
-		}
-		return -1;
+	public static int indexOf(String arg , String[] array){
+		List x = new ArrayList<>(Arrays.asList(array));
+		return x.indexOf(arg);
 	}
 }
+
