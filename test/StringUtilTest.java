@@ -19,9 +19,20 @@ public class StringUtilTest {
 	}
 	
 	@Test
-	public void testElementNotContained(){
-		String[] fruit = {"Apple", "Banana", "Grapes"};
-		assertEquals(-1, StringUtil.indexOf("Mango", fruit));
-		assertEquals(-1, StringUtil.indexOf("Blueberry", fruit));
+	public void testIndexDoubleElement() {
+		String[] emp = {"A", "B", "A"};
+		assertEquals(0, StringUtil.indexOf("A", emp));
+	}
+	
+	@Test	
+	public void testEmptyArray() {
+		String[] real_emp = {};
+		assertEquals(-1, StringUtil.indexOf("", real_emp));
+	}
+	
+	@Test	
+	public void testIndexDNE() {
+		String[] car = {"Porsche", "Toyota", "Mazda"};
+		assertEquals(-1, StringUtil.indexOf("BMW", car));
 	}
 }
